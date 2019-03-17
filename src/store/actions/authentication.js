@@ -10,21 +10,19 @@ const instance = axios.create({
 });
 
 const setAuthToken = token => {
-  return dispatch => {
-    if (token) {
-      localStorage.setItem("token", token);
-      axios.defaults.headers.common.Authorization = `JWT ${token}`;
-    } else {
-      delete axios.defaults.headers.common.Authorization;
-      localStorage.removeItem("token");
-    }
-  };
+  if (token) {
+    localStorage.setItem("token", token);
+    axios.defaults.headers.common.Authorization = `JWT ${token}`;
+  } else {
+    delete axios.defaults.headers.common.Authorization;
+    localStorage.removeItem("token");
+  }
 };
 
 export const login = userData => {
   return async dispatch => {
     try {
-      const res = await instance.post(`login/`, userData);
+      const res = await instance.post("login/", userData);
       const user = res.data;
 
       setAuthToken(user.token);
