@@ -22,15 +22,15 @@ const setAuthToken = token => {
 export const login = (userData, history) => {
   return async dispatch => {
     try {
-      const res = await instance.post("login/", userData);
+      const res = await instance.post(`login/`, userData);
       const user = res.data;
 
       setAuthToken(user.token);
       const decodedUser = jwt_decode(user.token);
       dispatch(setCurrentUser(decodedUser));
       history.push("/private");
-    } catch (err) {
-      setErrors(err);
+    } catch (error) {
+      setErrors(error);
     }
   };
 };
@@ -38,7 +38,7 @@ export const login = (userData, history) => {
 export const signup = userData => {
   return async dispatch => {
     try {
-      let response = await instance.post("signup/", userData);
+      let response = await instance.post(`signup/`, userData);
       let user = response.data;
       setAuthToken(user.token);
       const decodedUser = jwt_decode(user.token);
