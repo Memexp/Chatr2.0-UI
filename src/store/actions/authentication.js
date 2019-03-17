@@ -15,7 +15,16 @@ export const checkForExpiredToken = () => {};
 
 export const login = userData => {};
 
-export const signup = userData => {};
+export const signup = userData => {
+  return async dispatch => {
+    try {
+      await instance.get("/signup", userData);
+    } catch (error) {
+      console.error(error.response.data);
+    }
+    dispatch(login(userData));
+  };
+};
 
 export const logout = () => {};
 
