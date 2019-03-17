@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 
 // Scripts
 import main from "./assets/js/main";
@@ -40,7 +40,9 @@ const mapDispatchToProps = dispatch => ({
   checkForExpiredToken: () => dispatch(actionCreators.checkForExpiredToken())
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(App);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(App)
+);
