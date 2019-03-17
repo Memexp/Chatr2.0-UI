@@ -22,3 +22,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Logout);
+// HAHA
