@@ -56,10 +56,12 @@ export const signup = userData => {
   return async dispatch => {
     try {
       await instance.get("/signup", userData);
-    } catch (err) {
-      setErrors(err);
+
+    } catch (error) {
+      setErrors(error);
+
     }
-    dispatch(login(userData));
+    // dispatch(login(userData));
   };
 };
 
