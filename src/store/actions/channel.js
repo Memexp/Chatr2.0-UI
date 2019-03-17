@@ -12,7 +12,7 @@ const instance = axios.create({
 
 export const fetchChannelDetail = channelID => {
   return async dispatch => {
-    dispatch(setLoading());
+    // dispatch(setLoading());
     try {
       const res = await instance.get(`/channels/${channelID}/`);
       const channel = res.data;

@@ -1,4 +1,6 @@
 export { login, logout, signup, checkForExpiredToken } from "./authentication";
 
 export { setErrors } from "./errors";
-export { fetchAuthorDetail, postMessage } from "./channel";
+export { fetchChannelDetail, postMessage } from "./channel";
+
+export { fetchChannels } from "./channels";

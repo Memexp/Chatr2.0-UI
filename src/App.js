@@ -13,6 +13,7 @@ import RegistrationForm from "./components/RegistrationForm";
 import SuperSecretPage from "./components/SuperSecretPage";
 import { connect } from "react-redux";
 import * as actionCreators from "../src/store/actions";
+import ChannelList from "./components/ChannelList";
 
 class App extends Component {
   componentDidMount() {

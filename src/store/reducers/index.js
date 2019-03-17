@@ -4,9 +4,11 @@ import { combineReducers } from "redux";
 import authReducer from "./authentication";
 import errorReducer from "./errors";
 import channelReducer from "./channel";
+import channelsReducer from "./channels";
 
 export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
-  channelM: channelReducer
+  channelM: channelReducer,
+  channels: channelsReducer
 });
