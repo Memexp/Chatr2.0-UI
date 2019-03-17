@@ -20,9 +20,9 @@ export const signup = userData => {
     try {
       await instance.get("/signup", userData);
     } catch (error) {
-      console.error(error.response.data);
+      setErrors(error);
     }
-    dispatch(login(userData));
+    // dispatch(login(userData));
   };
 };
 
