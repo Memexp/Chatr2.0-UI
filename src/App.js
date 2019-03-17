@@ -28,6 +28,7 @@ class App extends Component {
           <Route path="/welcome" component={Welcome} />
           <Route path="/(login|signup)" component={RegistrationForm} />
           <PrivateRoute path="/private" component={SuperSecretPage} />
+          <Route path="/createChannel" />
           <Redirect to="/welcome" />
         </Switch>
         <Footer />

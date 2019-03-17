@@ -17,7 +17,7 @@ class RegistationForm extends Component {
     e.preventDefault();
     let type = this.props.match.url.substring(1);
     if (type === "login") {
-      this.props.login(this.state);
+      this.props.login(this.state, this.props.history);
     } else {
       this.props.signup(this.state);
     }
@@ -75,7 +75,8 @@ class RegistationForm extends Component {
 }
 const mapDispatchToProps = dispatch => ({
   signup: userData => dispatch(actionCreators.signup(userData)),
-  login: userData => dispatch(actionCreators.login(userData))
+  login: (userData, history) =>
+    dispatch(actionCreators.login(userData, history))
 });
 export default connect(
   null,
