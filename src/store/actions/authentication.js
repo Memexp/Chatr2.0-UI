@@ -19,7 +19,7 @@ const setAuthToken = token => {
   }
 };
 
-export const login = userData => {
+export const login = (userData, history) => {
   return async dispatch => {
     try {
       const res = await instance.post("login/", userData);
@@ -28,7 +28,7 @@ export const login = userData => {
       setAuthToken(user.token);
       const decodedUser = jwt_decode(user.token);
       dispatch(setCurrentUser(decodedUser));
-      // history.push("//welcome");
+      history.push("//welcome");
     } catch (err) {
       setErrors(err);
     }
