@@ -30,17 +30,21 @@ export const fetchChannels = () => {
 //   };
 // };
 
-// export const postAuthor = author => {
-//   return async dispatch => {
-//     try {
-//       const res = await instance.post("/api/authors/", author);
-//       const newAuthor = res.data;
-//       dispatch({
-//         type: actionTypes.POST_AUTHOR,
-//         payload: newAuthor
-//       });
-//     } catch (error) {
-//       console.error(error.response.data);
-//     }
-//   };
-// };
+export const addChannel = (channel, closeModel) => {
+  let newChannelName = {
+    name: [channel.name]
+  };
+  return async dispatch => {
+    try {
+      const res = await instance.post("channels/create/", newChannelName);
+      const newChannel = res.data;
+      dispatch({
+        type: actionTypes.ADD_CHANNEL,
+        payload: newChannel
+      });
+      closeModel();
+    } catch (error) {
+      setErrors(error);
+    }
+  };
+};
