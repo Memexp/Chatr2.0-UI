@@ -42,7 +42,7 @@ export const checkForExpiredToken = () => {
 export const login = userData => {
   return async dispatch => {
     try {
-      const res = await instance.post(`/api/login/`, userData);
+      const res = await instance.post(`login/`, userData);
       const token = res.data.token;
       dispatch(setAuthToken(token));
       // history.push("//welcome");
@@ -55,11 +55,11 @@ export const login = userData => {
 export const signup = userData => {
   return async dispatch => {
     try {
-      await instance.get("/signup", userData);
-
+      let response = await instance.post("signup/", userData);
+      let user = response.data;
+      dispatch(setAuthToken(user.token));
     } catch (error) {
       setErrors(error);
-
     }
     // dispatch(login(userData));
   };
