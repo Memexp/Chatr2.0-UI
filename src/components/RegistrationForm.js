@@ -15,7 +15,12 @@ class RegistationForm extends Component {
 
   submitHandler = e => {
     e.preventDefault();
-    this.props.signup(this.state);
+    let type = this.props.match.url.substring(1);
+    if (type === "login") {
+      this.props.login(this.state);
+    } else {
+      this.props.signup(this.state);
+    }
   };
 
   render() {
@@ -69,7 +74,8 @@ class RegistationForm extends Component {
   }
 }
 const mapDispatchToProps = dispatch => ({
-  signup: userData => dispatch(actionCreators.signup(userData))
+  signup: userData => dispatch(actionCreators.signup(userData)),
+  login: userData => dispatch(actionCreators.login(userData))
 });
 export default connect(
   null,
