@@ -14,14 +14,7 @@ import Logout from "../Logout";
 class AuthButton extends Component {
   render() {
     const { user } = this.props;
-    let buttons = (
-      <li className="nav-item">
-        <span className="nav-link">
-          <FontAwesomeIcon icon={faSignOutAlt} /> Logout
-          <Logout />
-        </span>
-      </li>
-    );
+    let buttons = <Logout />;
 
     if (!user) {
       buttons = [
@@ -47,11 +40,6 @@ class AuthButton extends Component {
   }
 }
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     logout: () => dispatch(actionCreators.logout())
-//   };
-// };
 const mapStateToProps = state => ({
   user: state.auth.user
 });

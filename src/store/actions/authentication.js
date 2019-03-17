@@ -12,29 +12,11 @@ const instance = axios.create({
 const setAuthToken = token => {
   return dispatch => {
     if (token) {
-      axios.defaults.headers.common.Authorization = `JWT ${token}`;
-      const decodedUser = jwt_decode(token);
-      dispatch(setCurrentUser(decodedUser));
       localStorage.setItem("token", token);
+      axios.defaults.headers.common.Authorization = `JWT ${token}`;
     } else {
       delete axios.defaults.headers.common.Authorization;
       localStorage.removeItem("token");
-      dispatch(setCurrentUser());
-    }
-  };
-};
-
-export const checkForExpiredToken = () => {
-  return dispatch => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      const currentTime = Date.now() / 1000;
-      const user = jwt_decode(token);
-      if (user.exp >= currentTime) {
-        setAuthToken(token);
-      } else {
-        dispatch(logout());
-      }
     }
   };
 };
@@ -43,8 +25,11 @@ export const login = userData => {
   return async dispatch => {
     try {
       const res = await instance.post(`login/`, userData);
-      const token = res.data.token;
-      dispatch(setAuthToken(token));
+      const user = res.data;
+
+      setAuthToken(user.token);
+      const decodedUser = jwt_decode(user.token);
+      dispatch(setCurrentUser(decodedUser));
       // history.push("//welcome");
     } catch (err) {
       setErrors(err);
@@ -57,19 +42,37 @@ export const signup = userData => {
     try {
       let response = await instance.post("signup/", userData);
       let user = response.data;
-      dispatch(setAuthToken(user.token));
+      setAuthToken(user.token);
+      const decodedUser = jwt_decode(user.token);
+      dispatch(setCurrentUser(decodedUser));
     } catch (error) {
       setErrors(error);
     }
-    // dispatch(login(userData));
+    dispatch(login(userData));
   };
 };
 
 export const logout = () => {
-  return setAuthToken();
+  setAuthToken();
+  return setCurrentUser();
 };
 
 const setCurrentUser = user => ({
   type: actionTypes.SET_CURRENT_USER,
   payload: user
 });
+
+export const checkForExpiredToken = () => {
+  return dispatch => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const currentTime = Date.now() / 1000;
+      const user = jwt_decode(token);
+      if (user.exp >= currentTime) {
+        dispatch(setCurrentUser(user));
+      } else {
+        dispatch(logout());
+      }
+    }
+  };
+};

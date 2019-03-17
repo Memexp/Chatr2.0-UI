@@ -11,10 +11,13 @@ import PrivateRoute from "./components/PrivateRoute";
 import Welcome from "./components/Welcome";
 import RegistrationForm from "./components/RegistrationForm";
 import SuperSecretPage from "./components/SuperSecretPage";
+import { connect } from "react-redux";
+import * as actionCreators from "../src/store/actions";
 
 class App extends Component {
   componentDidMount() {
-    main();
+    // main();
+    this.props.checkForExpiredToken();
   }
 
   render() {
@@ -33,4 +36,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  checkForExpiredToken: () => dispatch(actionCreators.checkForExpiredToken())
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);
