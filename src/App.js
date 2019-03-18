@@ -14,6 +14,7 @@ import SuperSecretPage from "./components/SuperSecretPage";
 import { connect } from "react-redux";
 import * as actionCreators from "../src/store/actions";
 import ChannelModel from "./components/ChannelModel";
+import ChannelDetail from "./components/ChannelDetail";
 
 class App extends Component {
   componentDidMount() {

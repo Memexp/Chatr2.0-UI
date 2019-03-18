@@ -3,31 +3,56 @@ import { connect } from "react-redux";
 import * as actionCreators from "../store/actions";
 
 class ChannelDetail extends Component {
+  state = {
+    channelInfo: {}
+  };
   componentDidMount() {
-    this.props.getChannel(this.props.match.params.channelID);
+    if (this.props.user) {
+      this.props.getChannel(this.props.match.params.channelID);
+    }
+  }
+  componentDidUpdate(prevState) {
+    if (
+      prevState.match.params.channelID !== this.props.match.params.channelID &&
+      this.props.user
+    ) {
+      this.props.getChannel(this.props.match.params.channelID);
+    }
   }
 
   render() {
     const channel = this.props.channel;
-    return (
-      <div>
-        <div>
-          <h3>{channel.name + " " + channel.owner}</h3>
-          <img
-            src={channel.image_url}
-            className="img-thumbnail img-fluid"
-            alt={channel.name + " " + channel.owner}
-          />
-        </div>
+    if (this.props.channels.length !== 0 && this.props.user) {
+      let channelInfo = this.props.channels.find(channel => {
+        if (channel.id === +this.props.match.params.channelID) {
+          return channel;
+        }
+      });
+      console.log(channelInfo);
 
-        {this.props.user ? <h1>Hi</h1> : <div />}
-      </div>
-    );
+      return (
+        <div>
+          <div>
+            <h3>{channelInfo.name + " " + channelInfo.owner}</h3>
+            <img
+              src={channelInfo.image_url}
+              className="img-thumbnail img-fluid"
+              alt={channel.name + " " + channel.owner}
+            />
+          </div>
+
+          {this.props.user ? <h1>Hi</h1> : <div />}
+        </div>
+      );
+    } else {
+      return <h1> loading</h1>;
+    }
   }
 }
 
 const mapStateToProps = state => {
   return {
+    channels: state.channels.channels,
     channel: state.channelM.channel,
     user: state.auth.user
   };
