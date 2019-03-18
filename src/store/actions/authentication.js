@@ -28,6 +28,7 @@ export const login = (userData, history) => {
       setAuthToken(user.token);
       const decodedUser = jwt_decode(user.token);
       dispatch(setCurrentUser(decodedUser));
+
       history.push("/private");
     } catch (error) {
       setErrors(error);

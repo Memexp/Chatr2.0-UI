@@ -30,6 +30,7 @@ class App extends Component {
           <Route path="/(login|signup)" component={RegistrationForm} />
           <Route path="/createChannel" component={ChannelModel} />
           <PrivateRoute path="/private" component={SuperSecretPage} />
+          <Route path="/channels/:channelID" component={ChannelDetail} />
           <Redirect to="/welcome" />
         </Switch>
         <Footer />
