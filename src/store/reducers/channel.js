@@ -1,7 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  channel: {}
+  channel: []
 };
 
 const reducer = (state = initialState, action) => {
