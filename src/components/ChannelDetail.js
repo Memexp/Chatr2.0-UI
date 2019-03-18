@@ -5,6 +5,8 @@ import MessageT from "./MessageT";
 import MessageForm from "./MessageForm";
 
 class ChannelDetail extends Component {
+  state = { seconds: 0 };
+
   componentDidMount() {
     if (this.props.user) {
       this.props.getChannel(this.props.match.params.channelID);
@@ -13,15 +15,15 @@ class ChannelDetail extends Component {
 
   componentDidUpdate(prevState) {
     if (
-      prevState.match.params.channelID !== this.props.match.params.channelID &&
-      this.props.user
+      this.props.user !== prevState.user ||
+      prevState.match.params.channelID !== this.props.match.params.channelID
     ) {
       this.props.getChannel(this.props.match.params.channelID);
     }
   }
 
   render() {
-    const channel = this.props.channel;
+    let channel = this.props.channel;
 
     if (this.props.channels.length !== 0 && this.props.user) {
       let channelInfo = this.props.channels.find(channel => {
@@ -42,7 +44,7 @@ class ChannelDetail extends Component {
               alt={channelInfo.name}
             />
           </div>
-          <h5>{channel && <MessageT channel={channel} />}</h5>
+          <h5>{channel && <MessageT channel={this.props.channel} />}</h5>
           {this.props.user ? (
             <MessageForm channelID={this.props.match.params.channelID} />
           ) : (

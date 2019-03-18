@@ -4,9 +4,9 @@ import MessageRow from "./MessageRow";
 
 class MessageT extends Component {
   render() {
-    let channel = this.props.channel;
-    console.log(channel);
-    const messageRows = channel.map(channel => (
+    // let channel = this.props.channel;
+
+    const messageRows = this.props.channel.map(channel => (
       <MessageRow key={channel.id} channel={channel} />
     ));
     return (

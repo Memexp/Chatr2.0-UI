@@ -31,14 +31,16 @@ export const postMessage = (message, channelID) => {
   return async dispatch => {
     try {
       console.log(message);
-      const res = await instance.post(`/channels/${channelID}/send/`, message);
+      const res = await instance.post(`/channels/${channelID}/send/`, {
+        message: message.message
+      });
       const newMessageD = res.data;
       console.log("done", newMessageD);
 
-      dispatch({
-        type: actionTypes.POST_MESSAGE,
-        payload: newMessageD
-      });
+      // dispatch({
+      //   type: actionTypes.POST_MESSAGE,
+      //   payload: newMessageD
+      // });
     } catch (error) {
       setErrors(error);
     }
