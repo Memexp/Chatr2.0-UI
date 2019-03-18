@@ -10,12 +10,15 @@ class ChannelDetail extends Component {
       this.props.getChannel(this.props.match.params.channelID);
     }
   }
-  componentWillUpdate() {
-    setInterval(() => {
-      if (this.props.user) {
+  componentWillUpdate(prevState) {
+    if (
+      this.props.user === prevState.user ||
+      prevState.match.params.channelID === this.props.match.params.channelID
+    ) {
+      setInterval(() => {
         this.props.getChannel(this.props.match.params.channelID);
-      }
-    }, 500);
+      }, 4000);
+    }
   }
   componentDidUpdate(prevState) {
     if (
@@ -35,8 +38,8 @@ class ChannelDetail extends Component {
           return channel;
         }
       });
-      console.log("[ChannelDetail.js] channelinfo", channelInfo);
-      console.log("[ChannelDetail.js] channel", channel);
+      // console.log("[ChannelDetail.js] channelinfo", channelInfo);
+      // console.log("[ChannelDetail.js] channel", channel);
 
       return (
         <div>
