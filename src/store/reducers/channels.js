@@ -7,7 +7,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_CHANNELS:
-      console.log("In reducer", action.payload);
+      // console.log("In reducer", action.payload);
       return {
         ...state,
         channels: action.payload

@@ -12,7 +12,7 @@ export const fetchChannels = () => {
     try {
       const res = await instance.get("channels/");
       const channels = res.data;
-      console.log(channels);
+      //
       dispatch({
         type: actionTypes.FETCH_CHANNELS,
         payload: channels
@@ -34,13 +34,14 @@ export const addChannel = (channel, closeModel) => {
   let newChannelName = {
     name: [channel.name]
   };
+
   return async dispatch => {
     try {
-      const res = await instance.post("channels/create/", newChannelName);
-      const newChannel = res.data;
+      const res = await instance.post("channels/create/", channel);
+      // const newChannel = res.data;
       dispatch({
         type: actionTypes.ADD_CHANNEL,
-        payload: newChannel
+        payload: newChannelName
       });
       closeModel();
     } catch (error) {

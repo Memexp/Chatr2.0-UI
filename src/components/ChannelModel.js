@@ -12,6 +12,9 @@ class ChannelModal extends Component {
 
   onCloseModal = () => this.setState({ open: false });
 
+  componentDidMount() {
+    this.onOpenModal();
+  }
   render() {
     const { open } = this.state;
     return (
@@ -19,11 +22,6 @@ class ChannelModal extends Component {
         <Modal open={open} onClose={this.onCloseModal} center>
           <AddChannelForm closeModal={this.onCloseModal} />
         </Modal>
-        <input
-          type="button"
-          onClick={this.onOpenModal}
-          value="Add New Channel!"
-        />
       </div>
     );
   }
