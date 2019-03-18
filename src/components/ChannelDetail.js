@@ -28,7 +28,8 @@ class ChannelDetail extends Component {
 
 const mapStateToProps = state => {
   return {
-    channel: state.channelM.channel
+    channel: state.channelM.channel,
+    user: state.auth.user
   };
 };
 

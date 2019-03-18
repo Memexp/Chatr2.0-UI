@@ -13,7 +13,7 @@ import RegistrationForm from "./components/RegistrationForm";
 import SuperSecretPage from "./components/SuperSecretPage";
 import { connect } from "react-redux";
 import * as actionCreators from "../src/store/actions";
-import ChannelList from "./components/ChannelList";
+import ChannelModel from "./components/ChannelModel";
 
 class App extends Component {
   componentDidMount() {
@@ -28,7 +28,9 @@ class App extends Component {
         <Switch>
           <Route path="/welcome" component={Welcome} />
           <Route path="/(login|signup)" component={RegistrationForm} />
+          <Route path="/createChannel" component={ChannelModel} />
           <PrivateRoute path="/private" component={SuperSecretPage} />
+          <Route path="/channels/:channelID" component={ChannelDetail} />
           <Redirect to="/welcome" />
         </Switch>
         <Footer />
