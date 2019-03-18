@@ -33,11 +33,11 @@ class ChannelDetail extends Component {
       return (
         <div>
           <div>
-            <h3>{channelInfo.name + " " + channelInfo.owner}</h3>
+            <h3>{channelInfo.name}</h3>
             <img
               src={channelInfo.image_url}
               className="img-thumbnail img-fluid"
-              alt={channel.name + " " + channel.owner}
+              alt={channelInfo.name}
             />
           </div>
 
