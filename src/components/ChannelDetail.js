@@ -1,34 +1,38 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../store/actions";
+import MessageT from "./MessageT";
+import MessageForm from "./MessageForm";
 
 class ChannelDetail extends Component {
-  state = {
-    channelInfo: {}
-  };
+  state = { seconds: 0 };
+
   componentDidMount() {
     if (this.props.user) {
       this.props.getChannel(this.props.match.params.channelID);
     }
   }
+
   componentDidUpdate(prevState) {
     if (
-      prevState.match.params.channelID !== this.props.match.params.channelID &&
-      this.props.user
+      this.props.user !== prevState.user ||
+      prevState.match.params.channelID !== this.props.match.params.channelID
     ) {
       this.props.getChannel(this.props.match.params.channelID);
     }
   }
 
   render() {
-    const channel = this.props.channel;
+    let channel = this.props.channel;
+
     if (this.props.channels.length !== 0 && this.props.user) {
       let channelInfo = this.props.channels.find(channel => {
         if (channel.id === +this.props.match.params.channelID) {
           return channel;
         }
       });
-      console.log(channelInfo);
+      console.log("[ChannelDetail.js] channelinfo", channelInfo);
+      console.log("[ChannelDetail.js] channel", channel);
 
       return (
         <div>
@@ -40,8 +44,12 @@ class ChannelDetail extends Component {
               alt={channelInfo.name}
             />
           </div>
-
-          {this.props.user ? <h1>Hi</h1> : <div />}
+          <h5>{channel && <MessageT channel={this.props.channel} />}</h5>
+          {this.props.user ? (
+            <MessageForm channelID={this.props.match.params.channelID} />
+          ) : (
+            <div />
+          )}
         </div>
       );
     } else {

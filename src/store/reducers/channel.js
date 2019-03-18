@@ -1,7 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  channel: {}
+  channel: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,14 +13,11 @@ const reducer = (state = initialState, action) => {
         //loading: false
       };
 
-    // case actionTypes.POST_Messege:
-    //   return {
-    //     ...state,
-    //     author: {
-    //       ...state.author,
-    //       books: state.author.books.concat(action.payload)
-    //     }
-    //   };
+    case actionTypes.POST_MESSAGE:
+      return {
+        ...state,
+        channel: state.channel.concat(action.payload)
+      };
 
     // case actionTypes.SET_AUTHOR_LOADING:
     //   return {

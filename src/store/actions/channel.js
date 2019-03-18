@@ -27,21 +27,22 @@ export const fetchChannelDetail = channelID => {
   };
 };
 
-export const postMessage = (channel, authorID) => {
-  //   book = {
-  //     ...book,
-  //     authors: [authorID]
-  //   };
-  //   return async dispatch => {
-  //     try {
-  //       const res = await instance.post(`/api/books/`, book);
-  //       const newBook = res.data;
-  //       dispatch({
-  //         type: actionTypes.POST_BOOK,
-  //         payload: newBook
-  //       });
-  //     } catch (error) {
-  //       console.error(error.response.data);
-  //     }
-  //   };
+export const postMessage = (message, channelID) => {
+  return async dispatch => {
+    try {
+      console.log(message);
+      const res = await instance.post(`/channels/${channelID}/send/`, {
+        message: message.message
+      });
+      const newMessageD = res.data;
+      console.log("done", newMessageD);
+
+      // dispatch({
+      //   type: actionTypes.POST_MESSAGE,
+      //   payload: newMessageD
+      // });
+    } catch (error) {
+      setErrors(error);
+    }
+  };
 };

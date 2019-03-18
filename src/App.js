@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 
-// Scripts
-import main from "./assets/js/main";
-
 // Components
 import NavBar from "./components/Navigation/NavBar";
 import Footer from "./components/Footer";
