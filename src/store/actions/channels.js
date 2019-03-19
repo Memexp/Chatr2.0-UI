@@ -31,17 +31,13 @@ export const fetchChannels = () => {
 // };
 
 export const addChannel = (channel, closeModel) => {
-  let newChannelName = {
-    name: [channel.name]
-  };
-
   return async dispatch => {
     try {
       const res = await instance.post("channels/create/", channel);
-      // const newChannel = res.data;
+      let newChannel = res.data;
       dispatch({
         type: actionTypes.ADD_CHANNEL,
-        payload: newChannelName
+        payload: newChannel
       });
       closeModel();
     } catch (error) {

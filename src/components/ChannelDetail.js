@@ -5,21 +5,16 @@ import MessageT from "./MessageT";
 import MessageForm from "./MessageForm";
 
 class ChannelDetail extends Component {
+  interval = setInterval(() => {
+    this.props.getChannel(this.props.match.params.channelID);
+  }, 4000);
+
   componentDidMount() {
     if (this.props.user) {
       this.props.getChannel(this.props.match.params.channelID);
     }
   }
-  componentWillUpdate(prevState) {
-    if (
-      this.props.user === prevState.user ||
-      prevState.match.params.channelID === this.props.match.params.channelID
-    ) {
-      setInterval(() => {
-        this.props.getChannel(this.props.match.params.channelID);
-      }, 4000);
-    }
-  }
+
   componentDidUpdate(prevState) {
     if (
       this.props.user !== prevState.user ||
@@ -27,6 +22,19 @@ class ChannelDetail extends Component {
     ) {
       this.props.getChannel(this.props.match.params.channelID);
     }
+  }
+
+  componentWillUpdate(prevState) {
+    if (
+      this.props.user === prevState.user ||
+      prevState.match.params.channelID === this.props.match.params.channelID
+    ) {
+      return this.interval;
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
