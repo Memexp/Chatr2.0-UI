@@ -12,7 +12,7 @@ export const fetchChannels = () => {
     try {
       const res = await instance.get("channels/");
       const channels = res.data;
-      //
+      // console.log(channels);
       dispatch({
         type: actionTypes.FETCH_CHANNELS,
         payload: channels
