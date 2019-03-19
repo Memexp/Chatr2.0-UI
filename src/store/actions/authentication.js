@@ -51,8 +51,9 @@ export const signup = userData => {
   };
 };
 
-export const logout = () => {
+export const logout = history => {
   setAuthToken();
+  history.push("/login");
   return setCurrentUser();
 };
 

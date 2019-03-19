@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import * as actionCreators from "../store/actions";
+import { Redirect } from "react-router-dom";
 
 class AddChannelForm extends Component {
   state = {
@@ -23,6 +24,9 @@ class AddChannelForm extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
   render() {
+    if (!this.props.user) {
+      return <Redirect to="/login" />;
+    }
     return (
       <div className="mt-5 p-2">
         <form onSubmit={this.submitChannel}>

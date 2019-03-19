@@ -10,7 +10,7 @@ import Logout from "../Logout";
 class AuthButton extends Component {
   render() {
     const { user } = this.props;
-    let buttons = <Logout />;
+    let buttons = <Logout history={this.props.history} />;
 
     if (!user) {
       buttons = [
