@@ -22,7 +22,7 @@ class App extends Component {
   render() {
     return (
       <div className="content-wrapper">
-        <NavBar />
+        <NavBar history={this.props.history} />
         <Switch>
           <Route path="/welcome" component={Welcome} />
           <Route path="/(login|signup)" component={RegistrationForm} />
@@ -36,7 +36,11 @@ class App extends Component {
     );
   }
 }
-
+// const mapStateToProps = state => {
+//   return {
+//     user: state.auth.user
+//   };
+// };
 const mapDispatchToProps = dispatch => ({
   checkForExpiredToken: () => dispatch(actionCreators.checkForExpiredToken())
 });

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as actionCreators from "../store/actions";
 import MessageT from "./MessageT";
 import MessageForm from "./MessageForm";
+import { Redirect } from "react-router-dom";
 
 class ChannelDetail extends Component {
   interval = setInterval(() => {
@@ -39,6 +40,9 @@ class ChannelDetail extends Component {
 
   render() {
     let channel = this.props.channel;
+    if (!this.props.user) {
+      return <Redirect to="/login" />;
+    }
 
     if (this.props.channels.length !== 0 && this.props.user) {
       let channelInfo = this.props.channels.find(channel => {

@@ -8,7 +8,7 @@ import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 const Logout = props => {
   return (
     <li className="nav-item">
-      <span className="nav-link" onClick={props.logout}>
+      <span className="nav-link" onClick={() => props.logout(props.history)}>
         <FontAwesomeIcon icon={faSignOutAlt} /> Logout {props.user.username}
       </span>
     </li>
@@ -16,7 +16,7 @@ const Logout = props => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    logout: () => dispatch(actionCreators.logout())
+    logout: history => dispatch(actionCreators.logout(history))
   };
 };
 const mapStateToProps = state => ({
