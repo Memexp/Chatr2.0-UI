@@ -40,14 +40,10 @@ export const postMessage = (message, channelID) => {
   };
 };
 
-export const lastTimestamp = channel => {
-  let lastTimestampMessage = channel[channel.length - 1].timestamp;
-  console.log(lastTimestampMessage);
+export const lastTimestamp = (id, timestamp) => {
   return async dispatch => {
     try {
-      const res = await instance.get(
-        `channels/${channel.id}/?${lastTimestampMessage}`
-      );
+      const res = await instance.get(`channels/${id}/?latest=${timestamp}`);
       const messages = res.data;
 
       dispatch({

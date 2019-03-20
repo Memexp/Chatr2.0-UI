@@ -6,32 +6,43 @@ import MessageForm from "./MessageForm";
 import { Redirect } from "react-router-dom";
 
 class ChannelDetail extends Component {
-  interval = setInterval(() => {
-    this.props.timeStamp(this.props.channel);
-  }, 4000);
+  interval = 0;
 
   componentDidMount() {
     if (this.props.user) {
       this.props.getChannel(this.props.match.params.channelID);
+      if (this.props.channel.length !== 0) {
+        this.interval = setInterval(() => {
+          this.props.timeStamp(
+            this.props.match.params.channelID,
+            this.props.channel[this.props.channel.length - 1].timestamp
+          );
+        }, 4000);
+      }
     }
   }
 
-  componentDidUpdate(prevState) {
+  async componentDidUpdate(prevState) {
     if (
-      this.props.user !== prevState.user ||
       prevState.match.params.channelID !== this.props.match.params.channelID
     ) {
-      this.props.getChannel(this.props.match.params.channelID);
-    }
-  }
+      await clearInterval(this.interval);
+      await this.props.getChannel(this.props.match.params.channelID);
 
-  componentWillUpdate(prevState) {
-    if (
-      this.props.user === prevState.user ||
-      (prevState.match.params.channelID === this.props.match.params.channelID &&
-        this.props.channel)
-    ) {
-      return this.interval;
+      if (this.props.channel.length !== 0) {
+        await clearInterval(this.interval);
+        this.interval = setInterval(() => {
+          this.props.timeStamp(
+            this.props.match.params.channelID,
+            this.props.channel[this.props.channel.length - 1].timestamp
+          );
+        }, 4000);
+      } else {
+        this.interval = setInterval(
+          this.props.getChannel(this.props.match.params.channelID),
+          3000
+        );
+      }
     }
   }
 
@@ -90,7 +101,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getChannel: channelID =>
       dispatch(actionCreators.fetchChannelDetail(channelID)),
-    timeStamp: channel => dispatch(actionCreators.lastTimestamp(channel))
+    timeStamp: (channelid, channel) =>
+      dispatch(actionCreators.lastTimestamp(channelid, channel))
   };
 };
 
