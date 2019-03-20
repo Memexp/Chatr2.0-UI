@@ -9,9 +9,9 @@ import Loading from "../components/Loading";
 class ChannelDetail extends Component {
   interval = 0;
 
-  componentDidMount() {
+  async componentDidMount() {
     if (this.props.user) {
-      this.props.getChannel(this.props.match.params.channelID);
+      await this.props.getChannel(this.props.match.params.channelID);
       if (this.props.channel.length !== 0) {
         this.interval = setInterval(() => {
           this.props.timeStamp(
