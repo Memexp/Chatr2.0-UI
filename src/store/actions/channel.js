@@ -30,18 +30,30 @@ export const fetchChannelDetail = channelID => {
 export const postMessage = (message, channelID) => {
   return async dispatch => {
     try {
-      // console.log(message);
       // const res =
       await instance.post(`/channels/${channelID}/send/`, {
         message: message.message
       });
-      // const newMessageD = res.data;
-      // console.log("done", newMessageD);
+    } catch (error) {
+      setErrors(error);
+    }
+  };
+};
 
-      // dispatch({
-      //   type: actionTypes.POST_MESSAGE,
-      //   payload: newMessageD
-      // });
+export const lastTimestamp = channel => {
+  let lastTimestampMessage = channel[channel.length - 1].timestamp;
+  console.log(lastTimestampMessage);
+  return async dispatch => {
+    try {
+      const res = await instance.get(
+        `channels/${channel.id}/?${lastTimestampMessage}`
+      );
+      const messages = res.data;
+
+      dispatch({
+        type: actionTypes.GET_MESSAGES,
+        payload: messages
+      });
     } catch (error) {
       setErrors(error);
     }

@@ -19,11 +19,11 @@ const reducer = (state = initialState, action) => {
         channel: state.channel.concat(action.payload)
       };
 
-    // case actionTypes.SET_AUTHOR_LOADING:
-    //   return {
-    //     ...state,
-    //     loading: true
-    //   };
+    case actionTypes.GET_MESSAGES:
+      return {
+        ...state,
+        channel: state.channel.concat(action.payload)
+      };
     default:
       return state;
   }

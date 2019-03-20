@@ -7,7 +7,7 @@ import { Redirect } from "react-router-dom";
 
 class ChannelDetail extends Component {
   interval = setInterval(() => {
-    this.props.getChannel(this.props.match.params.channelID);
+    this.props.timeStamp(this.props.channel);
   }, 4000);
 
   componentDidMount() {
@@ -28,7 +28,8 @@ class ChannelDetail extends Component {
   componentWillUpdate(prevState) {
     if (
       this.props.user === prevState.user ||
-      prevState.match.params.channelID === this.props.match.params.channelID
+      (prevState.match.params.channelID === this.props.match.params.channelID &&
+        this.props.channel)
     ) {
       return this.interval;
     }
@@ -88,7 +89,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getChannel: channelID =>
-      dispatch(actionCreators.fetchChannelDetail(channelID))
+      dispatch(actionCreators.fetchChannelDetail(channelID)),
+    timeStamp: channel => dispatch(actionCreators.lastTimestamp(channel))
   };
 };
 
