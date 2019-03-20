@@ -4,6 +4,7 @@ import * as actionCreators from "../store/actions";
 import MessageT from "./MessageT";
 import MessageForm from "./MessageForm";
 import { Redirect } from "react-router-dom";
+import Loading from "../components/Loading";
 
 class ChannelDetail extends Component {
   interval = setInterval(() => {
@@ -40,19 +41,20 @@ class ChannelDetail extends Component {
 
   render() {
     let channel = this.props.channel;
+    // redirect the non logged in users
     if (!this.props.user) {
       return <Redirect to="/login" />;
     }
-
+    // loading page
+    // if (this.props.loading) {
+    //   return <Loading />;
+    // } else {
     if (this.props.channels.length !== 0 && this.props.user) {
       let channelInfo = this.props.channels.find(channel => {
         if (channel.id === +this.props.match.params.channelID) {
           return channel;
         }
       });
-      // console.log("[ChannelDetail.js] channelinfo", channelInfo);
-      // console.log("[ChannelDetail.js] channel", channel);
-
       return (
         <div>
           <div>
@@ -76,12 +78,14 @@ class ChannelDetail extends Component {
     }
   }
 }
+// }
 
 const mapStateToProps = state => {
   return {
     channels: state.channels.channels,
     channel: state.channelM.channel,
     user: state.auth.user
+    // loading: state.channelM.loading
   };
 };
 
