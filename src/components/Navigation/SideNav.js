@@ -12,6 +12,7 @@ import {
 
 // Components
 import ChannelNavLink from "./ChannelNavLink";
+import Loading from "../Loading";
 
 class SideNav extends React.Component {
   state = { collapsed: false };
@@ -33,6 +34,9 @@ class SideNav extends React.Component {
     const channelLinks = this.props.channels.map(channel => (
       <ChannelNavLink key={channel.name} channel={channel} />
     ));
+    // if (this.props.loading) {
+    //   return <div>Loading</div>;
+    // } else {
     return (
       <div>
         <ul className="navbar-nav navbar-sidenav" id="exampleAccordion">
@@ -65,10 +69,12 @@ class SideNav extends React.Component {
     );
   }
 }
+// }
 const mapStateToProps = state => {
   return {
     channels: state.channels.channels,
     user: state.auth.user
+    // loading: state.channels.loading
   };
 };
 

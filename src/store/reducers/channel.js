@@ -2,6 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   channel: []
+  // loading: true
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,7 +11,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         channel: action.payload
-        //loading: false
+        // loading: false
       };
 
     case actionTypes.POST_MESSAGE:
@@ -24,6 +25,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         channel: state.channel.concat(action.payload)
       };
+
+    // case actionTypes.SET_CHANNEL_LOADING:
+    //   return {
+    //     ...state,
+    //     loading: true
+    //   };
+
     default:
       return state;
   }
