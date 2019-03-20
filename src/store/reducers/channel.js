@@ -16,6 +16,12 @@ const reducer = (state = initialState, action) => {
 
     case actionTypes.POST_MESSAGE:
       return {
+        ...state
+        // channel: state.channel.concat(action.payload)
+      };
+
+    case actionTypes.GET_MESSAGES:
+      return {
         ...state,
         channel: state.channel.concat(action.payload)
       };
@@ -25,6 +31,7 @@ const reducer = (state = initialState, action) => {
     //     ...state,
     //     loading: true
     //   };
+
     default:
       return state;
   }
