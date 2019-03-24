@@ -10,9 +10,9 @@ class ChannelNavLink extends Component {
     const { channel } = this.props;
     return (
       <li
-        className="nav-item"
+        className="dropdown-item"
         data-toggle="tooltip"
-        data-placement="right"
+        data-placement="left"
         title={channel.name}
       >
         <NavLink className="nav-link" to={`/channels/${channel.id}`}>

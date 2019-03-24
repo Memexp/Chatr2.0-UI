@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions";
+
 // Fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,7 +13,6 @@ import {
 
 // Components
 import ChannelNavLink from "./ChannelNavLink";
-import Loading from "../Loading";
 
 class SideNav extends React.Component {
   state = { collapsed: false };
@@ -34,12 +34,9 @@ class SideNav extends React.Component {
     const channelLinks = this.props.channels.map(channel => (
       <ChannelNavLink key={channel.name} channel={channel} />
     ));
-    // if (this.props.loading) {
-    //   return <div>Loading</div>;
-    // } else {
     return (
-      <div classNmae="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <ul className="navbar-nav navbar-sidenav">
+      <div>
+        <ul className="navbar-nav navbar-sidenav" id="exampleAccordion">
           <li className="nav-item" data-toggle="tooltip" data-placement="right">
             <Link className="nav-link heading" to="/createChannel">
               <span className="nav-link-text mr-2">Channels</span>
@@ -59,9 +56,9 @@ class SideNav extends React.Component {
                 }))
               }
             >
-              {/* <FontAwesomeIcon
+              <FontAwesomeIcon
                 icon={this.state.collapsed ? faAngleRight : faAngleLeft}
-              /> */}
+              />
             </span>
           </li>
         </ul>
@@ -69,12 +66,11 @@ class SideNav extends React.Component {
     );
   }
 }
-// }
+
 const mapStateToProps = state => {
   return {
     channels: state.channels.channels,
     user: state.auth.user
-    // loading: state.channels.loading
   };
 };
 
