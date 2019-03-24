@@ -11,10 +11,6 @@ class AddChannelForm extends Component {
     image_url: ""
   };
 
-  //   componentWillUnmount() {
-  //     if (this.props.errors.length) this.props.setErrors();
-  //   }
-
   submitChannel = event => {
     event.preventDefault();
     this.props.addChannel(this.state, this.props.closeModal);

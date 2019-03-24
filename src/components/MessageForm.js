@@ -22,17 +22,17 @@ class MessageForm extends Component {
       <div className="mt-5 p-2">
         <form onSubmit={this.onSubmit}>
           <div className="input-group mb-3">
-            <div className="input-group-prepend">
-              <span className="input-group-text">Message</span>
+            <div className="input-group-prepend" />
+            <div className="col">
+              <label>Message</label>
+              <input
+                type="text"
+                className="form-control"
+                name="message"
+                onChange={this.onTextChange}
+              />
             </div>
-            <input
-              type="text"
-              className="form-control"
-              name="message"
-              onChange={this.onTextChange}
-            />
           </div>
-          <input type="submit" value="Add Message" />
         </form>
       </div>
     );
