@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions";
+
 // Fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
@@ -30,8 +31,8 @@ class SideNav extends React.Component {
       <ChannelNavLink key={channel.name} channel={channel} />
     ));
     return (
-      <div classNmae="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <ul className="navbar-nav navbar-sidenav">
+      <div>
+        <ul className="navbar-nav navbar-sidenav" id="exampleAccordion">
           <li className="nav-item" data-toggle="tooltip" data-placement="right">
             <Link className="nav-link heading" to="/createChannel">
               <span className="nav-link-text mr-2">Channels</span>
@@ -50,14 +51,22 @@ class SideNav extends React.Component {
                   collapsed: !prevState.collapsed
                 }))
               }
+
+            >
+              <FontAwesomeIcon
+                icon={this.state.collapsed ? faAngleRight : faAngleLeft}
+              />
+            </span>
+
             />
+
           </li>
         </ul>
       </div>
     );
   }
 }
-// }
+
 const mapStateToProps = state => {
   return {
     channels: state.channels.channels,
