@@ -27,12 +27,14 @@ class RegistationForm extends Component {
     const type = this.props.match.url.substring(1);
     return (
       <div className="card col-6 mx-auto p-0 mt-5">
-        <div className="card-body">
-          <h5 className="card-title mb-4">
-            {type === "login"
-              ? "Login to send messages"
-              : "Register an account"}
-          </h5>
+        <div className="alert alert-default">
+          <div className="card-body">
+            <h5 className="card-title mb-4">
+              {type === "login"
+                ? "Login to send messages"
+                : "Register an account"}
+            </h5>
+          </div>
           <form onSubmit={this.submitHandler}>
             <div className="form-group">
               <input
@@ -52,6 +54,7 @@ class RegistationForm extends Component {
                 onChange={this.changeHandler}
               />
             </div>
+
             <input
               className="btn btn-primary"
               type="submit"
