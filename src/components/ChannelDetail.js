@@ -68,8 +68,9 @@ class ChannelDetail extends Component {
         }
       });
       return (
-        <div>
+        <div className="text-center">
           <div>
+            <br />
             <h3>{channelInfo.name}</h3>
             <img
               src={channelInfo.image_url}
