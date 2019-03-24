@@ -6,9 +6,9 @@ import * as actionCreators from "../../store/actions";
 // Fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faAngleLeft,
+  faPlusCircle,
   faAngleRight,
-  faPlusCircle
+  faAngleLeft
 } from "@fortawesome/free-solid-svg-icons";
 
 // Components
@@ -60,6 +60,7 @@ class SideNav extends React.Component {
                 icon={this.state.collapsed ? faAngleRight : faAngleLeft}
               />
             </span>
+            />
           </li>
         </ul>
       </div>
