@@ -4,9 +4,9 @@ body {
   font-size: 0.875rem !important;
   font-weight: 400 !important;
   line-height: 1.5 !important;
-  color: #525f7f !important;
+  color: whitesmoke !important;
   text-align: left !important;
-  background-color: #171941 !important;
+  background-color: rgb(30, 30, 47) !important;
 }
 
 .page-header {
@@ -144,7 +144,7 @@ body.fixed-nav {
   height: 50px;
   text-align: center;
   color: white;
-  background: #171941;
+  background: rgb(30, 30, 47);
   line-height: 45px;
 }
 
@@ -154,7 +154,7 @@ body.fixed-nav {
 }
 
 .scroll-to-top:hover {
-  background: #171941;
+  background: rgb(30, 30, 47);
 }
 
 .scroll-to-top i {
@@ -394,15 +394,15 @@ body.fixed-nav {
 }
 
 #mainNav.fixed-top.navbar-dark .sidenav-toggler {
-  background-color: #171941;
+  background-color: rgb(30, 30, 47);
 }
 
 #mainNav.fixed-top.navbar-dark .sidenav-toggler a i {
-  color: #adb5bd;
+  color: whitesmoke;
 }
 
 #mainNav.fixed-top.navbar-light .sidenav-toggler {
-  background-color: #171941;
+  background-color: rgb(30, 30, 47);
 }
 
 #mainNav.fixed-top.navbar-light .sidenav-toggler a i {
@@ -449,7 +449,7 @@ body.sidenav-toggled #mainNav.static-top #sidenavToggler i {
 
 .content-wrapper {
   overflow-x: hidden;
-  background: #171941;
+  background: rgb(30, 30, 47);
 }
 
 @media (min-width: 992px) {
@@ -499,12 +499,12 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav .nav-link-collapse:after {
-  color: #868e96;
+  color: whitesmoke;
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item > .nav-link {
   transition: all 0.2s ease-out;
-  color: #868e96;
+  color: whitesmoke;
 }
 
 #mainNav.navbar-dark
@@ -513,7 +513,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   > .nav-item
   > .nav-link:hover {
   border-left: 3px solid #800c0c;
-  color: #adb5bd;
+  color: whitesmoke;
 }
 
 #mainNav.navbar-dark
@@ -523,7 +523,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   > .nav-link.heading {
   transition: all 0.2s ease-out;
   border-left: none;
-  color: #adb5bd;
+  color: whitesmoke;
   font-size: 1.2em;
 }
 
@@ -559,7 +559,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   .sidenav-third-level
   > li
   > a {
-  color: #868e96;
+  color: whitesmoke;
 }
 
 #mainNav.navbar-dark
@@ -590,7 +590,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   .sidenav-third-level
   > li
   > a:hover {
-  color: #adb5bd;
+  color: whitesmoke;
 }
 
 #mainNav.navbar-dark
@@ -598,20 +598,20 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   .navbar-nav
   > .nav-item.dropdown
   > .nav-link:after {
-  color: #adb5bd;
+  color: whitesmoke;
 }
 
 @media (min-width: 992px) {
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav {
-    background: #171941;
+    background: rgb(30, 30, 47);
   }
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
-    color: white !important;
-    background-color: #171941;
+    color: rgb(207, 81, 222) !important;
+    background-color: rgb(30, 30, 47);
   }
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a:focus,
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a:hover {
-    color: white;
+    color: rgb(207, 81, 222);
   }
   #mainNav.navbar-dark
     .navbar-collapse
@@ -623,7 +623,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     .navbar-sidenav
     > .nav-item
     .sidenav-third-level {
-    background: #171941;
+    background: rgb(30, 30, 47);
   }
 }
 
@@ -704,11 +704,11 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 
 @media (min-width: 992px) {
   #mainNav.navbar-light .navbar-collapse .navbar-sidenav {
-    background: #171941;
+    background: rgb(30, 30, 47);
   }
   #mainNav.navbar-light .navbar-collapse .navbar-sidenav li.active a {
     color: #000 !important;
-    background-color: #171941;
+    background-color: rgb(30, 30, 47);
   }
   #mainNav.navbar-light .navbar-collapse .navbar-sidenav li.active a:focus,
   #mainNav.navbar-light .navbar-collapse .navbar-sidenav li.active a:hover {
@@ -724,7 +724,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     .navbar-sidenav
     > .nav-item
     .sidenav-third-level {
-    background: #171941;
+    background: rgb(30, 30, 47);
   }
 }
 
@@ -771,7 +771,7 @@ footer.sticky-footer {
   bottom: 0;
   width: 100%;
   height: 56px;
-  background-color: #171941;
+  background-color: rgb(30, 30, 47);
   line-height: 55px;
 }
 
@@ -794,6 +794,7 @@ footer.sticky-footer {
   position: relative;
   top: 64px;
   bottom: 0;
-  max-width: 20%;
+  max-width: 21.5%;
   background-color: rgb(219, 53, 69) !important;
+  color: whitesmoke !important;
 }
