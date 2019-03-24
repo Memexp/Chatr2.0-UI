@@ -42,7 +42,6 @@ class App extends Component {
               <div className="squares square7" id="square7" />
               <div className="container">
                 <div className="content-center brand">
-                  <NavBar history={this.props.history} />
                   <h1 className="h1-seo">BLK•</h1>
                   <h3>WELCOME TO CHATR</h3>
                 </div>
@@ -50,6 +49,7 @@ class App extends Component {
             </div>
           </div>
         </header>
+        <NavBar history={this.props.history} />
         <Switch>
           <Route path="/welcome" component={Welcome} />
           <Route path="/(login|signup)" component={RegistrationForm} />
