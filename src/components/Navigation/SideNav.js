@@ -38,8 +38,8 @@ class SideNav extends React.Component {
     //   return <div>Loading</div>;
     // } else {
     return (
-      <div>
-        <ul className="navbar-nav navbar-sidenav" id="exampleAccordion">
+      <div classNmae="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <ul className="navbar-nav navbar-sidenav">
           <li className="nav-item" data-toggle="tooltip" data-placement="right">
             <Link className="nav-link heading" to="/createChannel">
               <span className="nav-link-text mr-2">Channels</span>
@@ -59,9 +59,9 @@ class SideNav extends React.Component {
                 }))
               }
             >
-              <FontAwesomeIcon
+              {/* <FontAwesomeIcon
                 icon={this.state.collapsed ? faAngleRight : faAngleLeft}
-              />
+              /> */}
             </span>
           </li>
         </ul>
