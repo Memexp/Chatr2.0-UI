@@ -7,18 +7,7 @@ class MessageT extends Component {
     const messageRows = this.props.channel.map(channel => (
       <MessageRow key={channel.id} channel={channel} />
     ));
-    return (
-      <table className="mt-3 table">
-        <thead>
-          <tr>
-            <th>Author</th>
-            <th>Message</th>
-            <th>Time</th>
-          </tr>
-        </thead>
-        <tbody>{messageRows}</tbody>
-      </table>
-    );
+    return <div>{messageRows}</div>;
   }
 }
 
